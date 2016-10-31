@@ -20,7 +20,6 @@ coloredlogs==5.0
 configparser==3.3.0.post2
 cryptography==1.1
 cssselect==0.9.1
-ctypes==1.0.2
 cv2==1.0
 decorator==4.0.9
 Django==1.8.6
