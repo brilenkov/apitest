@@ -17,7 +17,6 @@ prs = [
    
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    #return "Hello, World!"
     if request.method == 'GET':
         return jsonify({'products': prs})
     elif request.method == 'POST':
@@ -25,6 +24,14 @@ def index():
         for p in prs:
             sum+= int(request.json.get('r').count(p.get('code'))/p.get('price2cnt')) * p.get('price2') + request.json.get('r').count(p.get('code'))%p.get('price2cnt') * p.get('price1')            
         return jsonify(sum)
+    
+@app.route('/api', methods=['GET'])
+def api():
+    q = request.args.get('q')
+    sum = 0
+    for p in prs:
+        sum+= int(request.args.get('q').count(p.get('code'))/p.get('price2cnt')) * p.get('price2') + request.args.get('q').count(p.get('code'))%p.get('price2cnt') * p.get('price1')            
+    return jsonify(sum)
     
 if __name__ == '__main__':
     app.run()
