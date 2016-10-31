@@ -1,7 +1,7 @@
+#import unittest
 import unittest
 from app import app
 import json
-from decimal import Decimal
 
 testTable = {
 "ABCDABA"   :   793.6,
@@ -34,14 +34,12 @@ class TestCase1(unittest.TestCase):
         tester = app.test_client(self)
         for k,v in testTable.iteritems():
             self.assertEqual(str(tester.post('/', data=json.dumps(dict(r=k)),     content_type='application/json').data.strip()), str(v))
-            
-class TestCase2(unittest.TestCase):
+
     #Test via get query on '/api' page
-    def test_step_1(self):
+    def test_step_2(self):
         tester = app.test_client(self)
         for k,v in testTable.iteritems():
             self.assertEqual(str(tester.get('/api?q='+k).data.strip()), str(v))
-
 
 if __name__ == '__main__':
     unittest.main()

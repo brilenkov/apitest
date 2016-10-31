@@ -14,6 +14,8 @@ prs = [
 ]
 
 #curl -H "Content-Type: application/json" -X POST -d "{"""r""":"""ACB"""}" http://localhost:5000
+#or
+#curl http://localhost:5000/api?q=ABCD
    
 @app.route('/', methods=['GET', 'POST'])
 def index():
